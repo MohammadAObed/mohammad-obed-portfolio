@@ -1,0 +1,22 @@
+
+function createShadow(elementsForShadowDOM,firstShadow = '',lastShadow = '',iterations = 400, xaxis = 0, yaxis = 0, xdirection = 1.2, ydirection = 1, spread = 0) {
+    elementsForShadowDOM.forEach(element => {
+        
+        let shadow = firstShadow
+        for(let i=0; i< iterations; i+=1) {
+            shadow += (shadow ? ',' : '') + `${xaxis+i*xdirection}px ${yaxis+i*ydirection}px 1px ${spread}px #B99B5A` //for coffeMugHand the structure: box-shadow: 12px 2px 10px #222, repeatable(35px -12px 10px -15px #222) ,400px -15px 10px #222;
+    
+        }
+        shadow += lastShadow
+        console.log(element,shadow)
+        element.style.boxShadow = shadow
+    })
+}
+
+
+// createShadow(elementsForShadowDOM)
+// createShadow([coffeeMugContainerDOM],'','',300,10,10)
+// createShadow([coffeMugHandDOM],'12px 2px 10px #CFCFCF',', 420px -15px 10px #CFCFCF', 410, 35, -9, 1, -1/10,-8)
+// createShadow([bookContainerDOMShadow],'','',300,10,10)
+createSimpleShadow(elementsForShadowDOM)
+createSimpleShadow([coffeMugHandDOM],6,-2)
