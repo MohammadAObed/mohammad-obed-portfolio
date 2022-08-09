@@ -13,14 +13,19 @@ const glassesContainerDOM = document.querySelector('.js-glasses-container');
 const pencilContainerDOM = document.querySelector('.js-pencil-container');
 const keyboardDOM = document.querySelector('.js-keyboard')
 
+const phoneBtn = document.querySelector('.js-phone-btn')
+const phoneLockScreenDOM = document.querySelector('.js-phone .lock-screen')
+const phoneScreenDOM = document.querySelector('.js-phone .screen')
+
 const bookContainerDOM = document.querySelector('.js-book-container')
 const bookContainerDOMShadow = document.querySelector('.js-book-container .shadow')
 const bookPrevBtns = document.querySelectorAll('.js-book .back')
 const bookNextBtns = document.querySelectorAll('.js-book .front')
 const papersDOM = document.querySelectorAll('.js-book .paper')
 
+const bigShadeDOM = document.querySelector('.big-shade')
+
 const keysDOM = generateKeyboardKeys(keyboardDOM)
-const phoneBtn = document.querySelector('.js-phone-btn')
 
 // Global Variables
 const book = {
@@ -60,7 +65,7 @@ const glasses = {
 //create shadow for html elements
 
 generateBookPageszIndex() //to arrange book papers on top of each other in the right order, and to flip the pages correctly
-// generateRandomPressingOnKeyboardKeys(keysDOM) //when window load this is what we will get
+generateRandomPressingOnKeyboardKeys(keysDOM) //when window load this is what we will get
 
 // Event Listeners
 bookPrevBtns.forEach(prevBtn => {
@@ -69,7 +74,11 @@ bookPrevBtns.forEach(prevBtn => {
 bookNextBtns.forEach(nextBtn => {
     nextBtn.addEventListener('click',function() {goNextPage(book)})
 })
-
+bookContainerDOM.addEventListener('dblclick',()=> {
+    bigShadeDOM.classList.toggle('show-by-opacity')
+    bookContainerDOM.classList.toggle('move-book')
+    document.body.classList.toggle('bg')
+})
 coffeeContainerDOM.addEventListener('click',function() {
     dropOnCup(coffeeContainerDOM,coffeeCupDOM)
     displayInfo(coffeeContainerDOM, coffee)
@@ -83,8 +92,13 @@ cameraContainerDOM.addEventListener('click',()=>{
 glassesContainerDOM.addEventListener('click',()=>{
     displayInfo(glassesContainerDOM,glasses)
 })
+phoneLockScreenDOM.addEventListener('dblclick',()=>{
+    phoneLockScreenDOM.classList.add('remove-lock-screen')
+    phoneScreenDOM.classList.add('open-screen')
+})
 phoneBtn.addEventListener('click',()=>{
-   
+    phoneLockScreenDOM.classList.toggle('remove-lock-screen')
+    phoneScreenDOM.classList.toggle('open-screen')
 })
 
 //Keyboard functions
@@ -173,7 +187,7 @@ function generateRandomPressingOnKeyboardKeys(keys) {
 
     let randomKey = Math.floor(Math.random()*keys.length) 
     
-    let wholeAnimationDuration = 4400 //magic number! dont get lazy and change it bruh change it to get the sum of all typing animation duration
+    let wholeAnimationDuration = 4600 //magic number! dont get lazy and change it bruh change it to get the sum of all typing animation duration
 
     let keyboardPressInterval = setInterval(function(){
         clearKeyClass(keys[randomKey])
@@ -225,14 +239,14 @@ function dropOnCup(coffeeContainerDOM, coffeeCupDOM) {
 function displayInfo(elementDOM,element) {
 
     const info = elementDOM.querySelector('.info')
-    console.log(info)
+    // console.log(info)
     if(element.infoDisplayed) {
-    console.log(getComputedStyle(info).clipPath)
+    // console.log(getComputedStyle(info).clipPath)
     info.classList.add('close-info')
 
-    console.log(getComputedStyle(info).clipPath)
+    // console.log(getComputedStyle(info).clipPath)
         info.classList.remove('open-info')
-    console.log(getComputedStyle(info).clipPath)
+    // console.log(getComputedStyle(info).clipPath)
         
         elementDOM.classList.add('unclickable')
         element.infoDisplayed = false
@@ -261,11 +275,4 @@ function disableselect(e) {
   }  
   containerDOM.onselectstart = disableselect  
   containerDOM.onmousedown = disableselect
-
-//! WOOOWWWWWWWWWWWWWWWWWW
-// bookContainerDOM.addEventListener('dblclick',()=> {
-//     bookContainerDOM.style.bottom = '35%'
-//     bookContainerDOM.style.right = '38%'
-//     bookContainerDOM.style.transform = ' rotate(0)'
-// })
 
