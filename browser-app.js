@@ -27,7 +27,16 @@ const bigShadeDOM = document.querySelector('.big-shade')
 
 const keysDOM = generateKeyboardKeys(keyboardDOM)
 
+const switchThemeBtn = document.querySelector('.switch-theme')
+
 // Global Variables
+const switchTheme = {   
+color: document.documentElement.className,
+redCameraHTML: cameraContainerDOM.innerHTML,
+blueCameraHTML: `<div class="camera-body"></div><div class="info info-camera">
+<img src="https://avatars.githubusercontent.com/u/102017139?s=400&u=145e2f4d3c3c3bda79ea2d67d90e69edfb142c77&v=4" alt="">
+</div>`
+}
 const book = {
     pageCurrentLocation: 1, //being changed, obviously. duh...
     numOfPapers: papersDOM.length,
@@ -64,10 +73,9 @@ const glasses = {
 //add the twigles to the background
 //create shadow for html elements
 
-generateBookPageszIndex() //to arrange book papers on top of each other in the right order, and to flip the pages correctly
-generateRandomPressingOnKeyboardKeys(keysDOM) //when window load this is what we will get
 
 // Event Listeners
+
 bookPrevBtns.forEach(prevBtn => {
     prevBtn.addEventListener('click',function() {goPrevPage(book)})
 })
@@ -92,7 +100,7 @@ cameraContainerDOM.addEventListener('click',()=>{
 glassesContainerDOM.addEventListener('click',()=>{
     displayInfo(glassesContainerDOM,glasses)
 })
-phoneLockScreenDOM.addEventListener('dblclick',()=>{
+phoneLockScreenDOM.addEventListener('click',()=>{
     phoneLockScreenDOM.classList.add('remove-lock-screen')
     phoneScreenDOM.classList.add('open-screen')
 })
@@ -100,33 +108,11 @@ phoneBtn.addEventListener('click',()=>{
     phoneLockScreenDOM.classList.toggle('remove-lock-screen')
     phoneScreenDOM.classList.toggle('open-screen')
 })
+switchThemeBtn.addEventListener('click',()=>switchThemeColor(switchTheme))
 
-//Keyboard functions
-function generateKeyboardKeys(keyboard) {
-    let columns = keyboard.querySelectorAll('.column')
-    let key = `<span class="key"></span>`
-    let bigKey = `<div class="big-key"></div>`
-    let html = ``
-    let columnKeys = [60,15,18]
-    let bigKeys = [14,15,29,41,42,53,54,55,56,57,58,59,60]
-    // let middle = [3,3,0,1,3]
-    // let righty = [4,4,4,4,4]
-    let numOfKeys = 21+21+17+17+13
-    columns.forEach((column,index) => {
-        for(let i = 1; i<=columnKeys[index]; i++) {
-            if(bigKeys.includes(i)) {
-                column.innerHTML += bigKey
-            } else {
-                column.innerHTML += key
-            }
-        }
-        bigKeys = []
-    })
-    
-    let keys = document.querySelectorAll('.keyboard .column-1 .key, .keyboard .column-1 .big-key')
-
-    return keys
-}
+generateBookPageszIndex() //to arrange book papers on top of each other in the right order, and to flip the pages correctly
+generateRandomPressingOnKeyboardKeys(keysDOM) //when window load this is what we will get
+switchThemeBtn.click()
 
 //Book functions
 function generateBookPageszIndex() {
@@ -179,6 +165,33 @@ function goPrevPage(book) {
 }
 
 // Keyboard functions
+function generateKeyboardKeys(keyboard) {
+    let columns = keyboard.querySelectorAll('.column')
+    let key = `<span class="key"></span>`
+    let bigKey = `<div class="big-key"></div>`
+    let html = ``
+    let columnKeys = [60,15,18]
+    let bigKeys = [14,15,29,41,42,53,54,55,56,57,58,59,60]
+    // let middle = [3,3,0,1,3]
+    // let righty = [4,4,4,4,4]
+    let numOfKeys = 21+21+17+17+13
+    columns.forEach((column,index) => {
+        for(let i = 1; i<=columnKeys[index]; i++) {
+            // if(index == 1 && i )
+            if(bigKeys.includes(i)) {
+                column.innerHTML += bigKey
+            } else {
+                column.innerHTML += key
+            }
+        }
+        bigKeys = []
+    })
+    
+    let keys = document.querySelectorAll('.keyboard .column-1 .key, .keyboard .column-1 .big-key')
+
+    return keys
+}
+
 function generateRandomPressingOnKeyboardKeys(keys) {
         
     keys.forEach(key => {
@@ -194,7 +207,7 @@ function generateRandomPressingOnKeyboardKeys(keys) {
         randomKey = Math.floor(Math.random()*keys.length)
         if(randomKey < keys.length/5 && randomKey != 56) randomKey = 56
         keys[randomKey].click()
-    },300) //changed based on preference
+    },200) //changed based on preference
 
     setTimeout(()=>{
         clearInterval(keyboardPressInterval)
@@ -207,14 +220,14 @@ function generateRandomPressingOnKeyboardKeys(keys) {
 
 function clearKeyClass(key) {
     key.classList.remove('animate-key')
-    key.classList.remove('animate-red-key')
+    key.classList.remove('animate-colored-key')
 }
 
 function pressKey(key) {
     key.addEventListener('click',(e)=>{
         if(e.isTrusted) return //so when user clicks we don't add the class
         if(getComputedStyle(key).backgroundColor != 'rgb(255, 255, 255)') {
-            key.classList.add('animate-red-key')
+            key.classList.add('animate-colored-key')
             return
         }
         key.classList.add('animate-key')
@@ -276,3 +289,21 @@ function disableselect(e) {
   containerDOM.onselectstart = disableselect  
   containerDOM.onmousedown = disableselect
 
+
+
+function switchThemeColor(switchTheme) {
+    
+    if(switchTheme.color == 'blue') {
+        cameraContainerDOM.innerHTML = switchTheme.redCameraHTML
+        switchTheme.color = 'red'
+        document.documentElement.className = switchTheme.color
+        return
+    }
+    if(switchTheme.color == 'red') {
+        cameraContainerDOM.innerHTML = switchTheme.blueCameraHTML 
+        switchTheme.color = 'blue'
+        document.documentElement.className = switchTheme.color
+        return
+    }
+
+}
