@@ -1835,7 +1835,7 @@ input.switch-theme:checked + label:after {
     .camera-container {
         transform: rotate(5deg) scale(0.22);
         right: 60px;
-        bottom: 230px;
+        bottom: 280px;
 
     }
     .phone-container {
@@ -1859,13 +1859,13 @@ input.switch-theme:checked + label:after {
         transform: rotate(25deg) scale(0.6);
     }
     .pencil-container {
-        bottom: 140px;
+        bottom: 170px;
         left: 100px;
         transform: rotate(-195deg) scale(0.65);
 
     }
     .eraser-container {
-        bottom: 130px;
+        bottom: 160px;
         left: 50px;
         transform: rotate(-45deg) scale(0.6);
 
@@ -1889,7 +1889,7 @@ input.switch-theme:checked + label:after {
         margin-left: 300px;
     }
     .coffee-container {
-        bottom: 1px;
+        bottom: 15px;
         left: 50px;
         transform: scale(0.6);
     }
@@ -1910,7 +1910,7 @@ input.switch-theme:checked + label:after {
     .camera-container {
         transform: rotate(5deg) scale(0.22);
         right: 60px;
-        bottom: 250px;
+        bottom: 280px;
 
     }
     .phone-container {
@@ -1934,13 +1934,13 @@ input.switch-theme:checked + label:after {
         transform: rotate(25deg) scale(0.6);
     }
     .pencil-container {
-        bottom: 140px;
+        bottom: 170px;
         left: 100px;
         transform: rotate(-195deg) scale(0.65);
 
     }
     .eraser-container {
-        bottom: 130px;
+        bottom: 160px;
         left: 50px;
         transform: rotate(-45deg) scale(0.6);
 
@@ -1964,7 +1964,7 @@ input.switch-theme:checked + label:after {
         margin-left: 300px;
     }
     .coffee-container {
-        bottom: 1px;
+        bottom: 15px;
         left: 50px;
         transform: scale(0.6);
     }
