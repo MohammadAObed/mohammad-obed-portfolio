@@ -37,7 +37,12 @@
     --book-text-color: #fcf5e0;
     --colored-key-press: #263a5a;
 }
-   
+  
+:root {
+    --keyboard-width: 555px;
+    --keyboard-height: calc(var(--keyboard-width) / 4.4);
+    --key-size: calc(var(--keyboard-width) / 31); 
+}
 /* GLOBALS */
 
 * {
@@ -72,7 +77,7 @@ body {
     /* border: 1px solid red; */
     position: relative;
     background-color: var(--container-bg); /* #e6505d */
-    clip-path: ellipse(90% 100% at 48% 0%);
+    clip-path: ellipse(100% 98% at 48% 0%);
     z-index: 1;
 }
 
@@ -151,7 +156,7 @@ body {
     -webkit-background-clip:text;
     -webkit-text-fill-color: transparent; */
     animation: opac 0s 1.6s forwards, no-cursor 0s 3s forwards, typing 1.4s steps(14) 1.6s, blink .5s step-end infinite alternate;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     opacity: 0;
 }
 
@@ -445,8 +450,10 @@ body {
     ;
 }
 
-.notebook-container button {
+.notebook-container a {
     border: none;
+    text-decoration: none;
+    color: #111;
     position: absolute;
     bottom: 8px;
     right: 13px;
@@ -455,6 +462,11 @@ body {
     background-color: #c5c5c5;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.notebook-container a:hover {
+    background-color: #dad8d8;
+
 }
 /* Notebook End */
 
@@ -540,6 +552,7 @@ body {
     position: relative;
     box-shadow: 7px 7px 0 -1px rgba(0,0,0,0.2);
     transform: scale(1.2);
+    z-index: 1;
 }
 
 .pot .circle {
@@ -690,12 +703,12 @@ body {
 }
 
 .keyboard {
-    width: 555px;
-    height: 125px;
+    width: var(--keyboard-width);
+    height: var(--keyboard-height);
     background-color: var(--keyboard-bg);
     display: grid;
     grid-template-columns: 3.7fr .5fr 1.1fr;
-    grid-column-gap: 8px;
+    grid-column-gap: calc(var(--key-size) / 2);
     box-shadow: 3px 3px 1px -1px rgba(0,0,0,0.1);
     position: relative;
 }
@@ -706,15 +719,16 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-content:flex-start;
-    padding: 3px;
+    padding-right: calc(var(--key-size) / 8); 
+    padding-top: 2.5px;
     /* gap: 6px; */
 }
 
 .keyboard .column span, .column div {
     background-color: #fff;
     margin: 3px 3px;
-    height: 18px;
-    width: 18px;
+    height: var(--key-size);
+    width: var(--key-size);
     box-shadow: .1px .3px 0 .3px rgba(0,0,0,0.2);
 }
 
@@ -731,28 +745,31 @@ body {
 }
 
 .keyboard .column .big-key:nth-of-type(n) {
-    width: calc(18px*1.7);
+    width: calc(var(--key-size)*1.7);
 }
 .keyboard .column .big-key:nth-of-type(n + 3) {
-    width: calc(18px*2);
+    width: calc(var(--key-size)*2.1);
 }
 .keyboard .column .big-key:nth-of-type(n + 5) {
-    width: calc(18px*2.7);
+    width: calc(var(--key-size)*2.8);
 }
 .keyboard .column .big-key:nth-of-type(n + 7) {
-    width: calc(18px*1.9);
+    width: calc(var(--key-size)*2.1);
 }
 .keyboard .column .big-key:nth-of-type(10) {
-    width: calc(18px*5.5);
+    width: calc(var(--key-size)*5.5);
 }
 .keyboard .column .big-key:nth-of-type(n + 11) {
-    width: calc(18px*1.95);
+    width: calc(var(--key-size)*2);
+}
+.keyboard .column .big-key:nth-of-type(n + 11) {
+    width: calc(var(--key-size)*1.8);
 }
 
 .keyboard .column-2 {
     display: grid;
-    grid-template-columns: repeat(3,24px);
-    grid-template-rows: 24px 24px 24px;
+    grid-template-columns: repeat(3,calc(var(--keyboard-width)/23));
+    grid-template-rows: repeat(3,calc(var(--keyboard-width)/23));
 }
 .keyboard .column-2 > span:nth-of-type(n+7) {
     visibility:hidden;
@@ -768,18 +785,18 @@ body {
 
 .keyboard .column-3 {
     display: grid;
-    grid-template-columns: repeat(4,24px);
-    grid-template-rows: repeat(5,24px);
+    grid-template-columns: repeat(4,calc(var(--keyboard-width)/23));
+    grid-template-rows: repeat(5,calc(var(--keyboard-width)/23));
     justify-content: flex-end;
 }
 
 .keyboard .column-3 .key:nth-of-type(17) {
     grid-column: span 2;
-    width: 42px;
+    width: calc(var(--key-size) * 2.3);
 }
 .keyboard .column-3 .key:nth-of-type(16) {
     grid-row: span 2;
-    height: 42px;
+    height: calc(var(--key-size) * 2.3);
 }
 
 /* javascript key pressing */
@@ -802,15 +819,15 @@ input[type=checkbox].switch-theme {
 
 .switch-theme, .switch-theme + label {
     position: absolute;
-    top: -72px;
+    top: -67px;
     left: 386px;
 }
 
 .switch-theme + label {
 	cursor: pointer;
 	text-indent: -9999px;
-	width: 33px;
-	height: 17px;
+	width: 30px;
+	height: 15px;
 	background: var(--keyboard-key);
 	display: block;
 	border-radius: 100px;
@@ -822,8 +839,8 @@ input[type=checkbox].switch-theme {
 	position: absolute;
 	top: .5px;
 	left: .5px;
-	width: 15px;
-	height: 15px;
+	width: 13px;
+	height: 13px;
 	background: #fff;
 	border-radius: 90px;
 	transition: 0.3s;
@@ -1476,17 +1493,8 @@ input.switch-theme:checked + label:after {
     background-color: #382C15;
     border: 6px solid #685940;
 }
-.camera-t2 {
-    background-color: #112240;
-    border-left: 30px solid #0A192F;
-    border-right: 30px solid #0A192F;
 
-}
-
-.animate-colored-key-t2 {
-    background-color: #263a5a !important;
-}
-
+/* other camera */
 .camera-container .camera-body::before {
     content: "";
     position: absolute;
@@ -1534,5 +1542,447 @@ input.switch-theme:checked + label:after {
     top: 37px;
     /* right: 200px; */
   }
+
+
+@media (max-width: 1100px) {
+    /* :root {
+        --keyboard-width: 400px;
+        --key-size: calc(var(--keyboard-width) / 35); 
+    }
+    .keyboard .column .big-key:nth-of-type(n + 11) {
+        width: calc(var(--key-size)*2.2);
+    } */
+    /* .keyboard-container {
+        transform: translate(-50%,-1%) scale(1);
+        transform: rotate(0.5deg);
+    } */
+    .plant-container {
+        left: 20px;
+    }
+}
+
+@media (max-width: 1060px) {
+
+    .keyboard-container {
+        transform: translate(-50%,-1%) scale(1.1);
+        top: 6px;
+    }
+    .book-container {
+        transform: rotate(-20deg) scale(0.8);
+    }
+    .camera-container {
+        transform: scale(0.24) rotate(5deg);
+        bottom: 330px;
+        right: 150px;
+    }
+    .phone-container {
+        transform: rotate(-12deg) scale(0.8);
+        right: 25px;
+    }
+    .plant-container {
+        transform: scale(0.8);
+    }
+    .glasses-container {
+        transform: rotate(-20deg) scale(.6);
+        left: 175px;
+    }
+    .notebook-container {
+    transform: rotate(25deg) scale(0.8);
+    }
+    .pencil-container {
+        transform: rotate(-195deg) scale(0.85);
+
+    }
+    .eraser-container {
+    transform: rotate(-45deg) scale(0.8);
+
+    }
+    .coffee-container {
+        transform: scale(0.8);
+    }
+    .text-container {
+        margin-left: 50px;
+
+    }
+    .line-1 {
+        font-size: 1.1rem;
+    }
+    .line-2 {
+        font-size: 2.6rem;
+    }
+    .line-3 {
+        font-size: 1.3rem;
+    }
+    .shade {
+        width: 55%;
+    }
+}
+
+@media (max-width: 917px) {
+    .keyboard-container {
+        transform: translate(-50%,-1%) scale(1);
+        top: -1px;
+    }
+    .book-container {
+        transform: rotate(-20deg) scale(0.7);
+    }
+    .camera-container {
+        transform: rotate(5deg) scale(0.22);
+        bottom: 330px;
+        right: 120px;
+    }
+    .phone-container {
+        transform: rotate(-12deg) scale(0.7);
+        right: 15px;
+    }
+    .plant-container {
+        transform: scale(0.7);
+        left: 10px;
+    }
+    .glasses-container {
+        transform: rotate(-20deg) scale(.5);
+        left: 155px;
+    }
+    .notebook-container {
+    transform: rotate(25deg) scale(0.7);
+    }
+    .pencil-container {
+        transform: rotate(-195deg) scale(0.75);
+
+    }
+    .eraser-container {
+    transform: rotate(-45deg) scale(0.7);
+
+    }
+    .coffee-container {
+        transform: scale(0.7);
+    }
+    .text-container {
+        margin-left: 50px;
+
+    }
+    .line-1 {
+        font-size: 1rem;
+    }
+    .line-2 {
+        font-size: 2.4rem;
+    }
+    .line-3 {
+        font-size: 1.1rem;
+    }
+    .shade {
+        width: 55%;
+    }
+}
+
+@media (max-width: 817px) {
+    .container {
+        clip-path: ellipse(100% 96% at 48% 0%);
+    }
+    .keyboard-container {
+        transform: translate(-50%,3%) scale(.9);
+        top: -12px;
+    }
+    .book-container {
+        transform: rotate(-20deg) scale(0.6);
+    }
+    .camera-container {
+        transform: rotate(5deg) scale(0.22);
+        right: 100px;
+        bottom: 290px;
+
+    }
+    .phone-container {
+        transform: rotate(-12deg) scale(0.7);
+        right: 25px;
+        top: 90px;
+    }
+    .plant-container {
+        left: 10px;
+        top: 110px;
+        transform: scale(0.7);
+    }
+    .glasses-container {
+        transform: rotate(-20deg) scale(.45);
+        top: 240px;
+        left: 115px;
+    }
+    .info-glasses {
+        font-size: 1.1rem;
+
+    }
+    .notebook-container {
+        top: 260px;
+        left: -30px;
+        transform: rotate(25deg) scale(0.6);
+    }
+    .pencil-container {
+        bottom: 140px;
+        left: 130px;
+        transform: rotate(-195deg) scale(0.65);
+
+    }
+    .eraser-container {
+        bottom: 130px;
+        left: 80px;
+        transform: rotate(-45deg) scale(0.6);
+
+    }
+    .coffee-container {
+        bottom: 10px;
+        left: 50px;
+        transform: scale(0.6);
+    }
+    .text-container {
+        margin-top: -20px;
+        margin-left: 150px;
+    }
+    .line-1 {
+        font-size: .9rem;
+    }
+    .line-2 {
+        font-size: 2.2rem;
+    }
+    .line-3 {
+        font-size: 1rem;
+    }
+    .shade {
+        width: 55%;
+    }
+    .shade-1 {
+        transform: rotate(15deg);
+        left:-250px;
+
+    }
+    .shade-2{
+    transform: rotate(-15deg);
+    right:-250px;
+
+
+    }
+}
+
+@media (max-width: 675px) {
+    .camera-container {
+        transform: rotate(5deg) scale(0.22);
+        right: 60px;
+    }
+    .phone-container {
+        transform: rotate(-12deg) scale(0.65);
+        right: 25px;
+        top: 100px;
+    }
+    .plant-container {
+        left: 10px;
+        top: 110px;
+        transform: scale(0.6);
+    }
+    .glasses-container {
+        transform: rotate(-20deg) scale(.45);
+        top: 245px;
+        left: 90px;
+    }
+}
+
+@media (max-width: 600px) {
+    .line-1 {
+        font-size: .7rem;
+    }
+    .line-2 {
+        font-size: 1.8rem;
+    }
+    .line-3 {
+        font-size: .8rem;
+    }
+    .text-container {
+        margin-top: -20px;
+        margin-left: 220px;
+    }
+    .coffee-container {
+        bottom: 1px;
+        left: 50px;
+        transform: scale(0.6);
+    }
+    .book-container {
+        bottom: -50px;
+    }
+    .shade {
+        width: 55%;
+    }
+    .shade-1 {
+        transform: rotate(10deg);
+        left:-200px;
+
+    }
+    .shade-2{
+    transform: rotate(-10deg);
+    right:-200px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .keyboard-container {
+        transform: translate(-50%,-5%) scale(.73);
+        top: -12px;
+    }
+    .book-container {
+        transform: rotate(-20deg) scale(0.6);
+        right: -10px;
+        bottom: -70px;
+
+    }
+    .camera-container {
+        transform: rotate(5deg) scale(0.22);
+        right: 60px;
+        bottom: 230px;
+
+    }
+    .phone-container {
+        transform: rotate(-12deg) scale(0.7);
+        right: 25px;
+        top: 90px;
+    }
+    .plant-container {
+        left: 1px;
+        top: 120px;
+        transform: scale(0.6);
+    }
+    .glasses-container {
+        transform: rotate(-20deg) scale(.45);
+        top: 250px;
+        left: 85px;
+    }
+    .notebook-container {
+        top: 280px;
+        left: -40px;
+        transform: rotate(25deg) scale(0.6);
+    }
+    .pencil-container {
+        bottom: 140px;
+        left: 100px;
+        transform: rotate(-195deg) scale(0.65);
+
+    }
+    .eraser-container {
+        bottom: 130px;
+        left: 50px;
+        transform: rotate(-45deg) scale(0.6);
+
+    }
+    .coffee-container {
+        bottom: -10px;
+        left: 40px;
+        transform: scale(0.6);
+    }
+    .line-1 {
+        font-size: .7rem;
+    }
+    .line-2 {
+        font-size: 1.8rem;
+    }
+    .line-3 {
+        font-size: .8rem;
+    }
+    .text-container {
+        margin-top: 0px;
+        margin-left: 300px;
+    }
+    .coffee-container {
+        bottom: 1px;
+        left: 50px;
+        transform: scale(0.6);
+    }
+    
+}
+
+@media (max-width: 400px) {
+    .keyboard-container {
+        transform: translate(-50%,-5%) scale(.68);
+        top: -16px;
+    }
+    .book-container {
+        transform: rotate(-20deg) scale(0.6);
+        right: -10px;
+        bottom: -70px;
+
+    }
+    .camera-container {
+        transform: rotate(5deg) scale(0.22);
+        right: 60px;
+        bottom: 250px;
+
+    }
+    .phone-container {
+        transform: rotate(-12deg) scale(0.7);
+        right: 25px;
+        top: 90px;
+    }
+    .plant-container {
+        left: 1px;
+        top: 120px;
+        transform: scale(0.6);
+    }
+    .glasses-container {
+        transform: rotate(-20deg) scale(.45);
+        top: 250px;
+        left: 85px;
+    }
+    .notebook-container {
+        top: 280px;
+        left: -40px;
+        transform: rotate(25deg) scale(0.6);
+    }
+    .pencil-container {
+        bottom: 140px;
+        left: 100px;
+        transform: rotate(-195deg) scale(0.65);
+
+    }
+    .eraser-container {
+        bottom: 130px;
+        left: 50px;
+        transform: rotate(-45deg) scale(0.6);
+
+    }
+    .coffee-container {
+        bottom: -10px;
+        left: 40px;
+        transform: scale(0.6);
+    }
+    .line-1 {
+        font-size: .7rem;
+    }
+    .line-2 {
+        font-size: 1.8rem;
+    }
+    .line-3 {
+        font-size: .8rem;
+    }
+    .text-container {
+        margin-top: 0px;
+        margin-left: 300px;
+    }
+    .coffee-container {
+        bottom: 1px;
+        left: 50px;
+        transform: scale(0.6);
+    }
+    .shade {
+        width: 60%;
+    }
+    .shade-1 {
+        transform: rotate(10deg);
+        left:-170px;
+
+    }
+    .shade-2{
+    transform: rotate(-10deg);
+    right:-170px;
+    }
+
+    
+}
+
 
 /* End Home Page */
