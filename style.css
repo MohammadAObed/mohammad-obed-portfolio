@@ -260,6 +260,15 @@ body {
     box-shadow: -4px 7px 0 -1px rgba(0,0,0,0.2);
 }
 
+.eraser-container a {
+    position: absolute;
+    top:0; left:0;
+    /* border: 2px solid red; */
+    z-index: 1;
+    width: 120%;
+    height: 100%;
+}
+
 .eraser {
     width: 40px;
     height: 25px;

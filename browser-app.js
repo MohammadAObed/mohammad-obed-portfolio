@@ -11,6 +11,7 @@ const cameraContainerDOM = document.querySelector('.js-camera-container');
 const glassesContainerDOM = document.querySelector('.js-glasses-container');
 
 const pencilContainerDOM = document.querySelector('.js-pencil-container');
+const eraserContainerDOM = document.querySelector('.js-eraser-container');
 const keyboardDOM = document.querySelector('.js-keyboard')
 
 const phoneBtn = document.querySelector('.js-phone-btn')
