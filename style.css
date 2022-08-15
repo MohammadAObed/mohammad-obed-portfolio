@@ -152,7 +152,8 @@ body {
     width: 13ch;
     font-weight: bold;
     font-size: 1.5rem;
-    animation: no-cursor 0s 1.6s forwards,typing 1.6s steps(13), blink .5s step-end infinite alternate;
+    opacity: 0;
+    animation: opac 0s 1s forwards, no-cursor 0s 1.6s forwards,typing 1.6s steps(13) 1s, blink .5s step-end infinite alternate;
 }
 
 .line-2 {
@@ -162,7 +163,7 @@ body {
     /* background: linear-gradient(92deg, #16A085 0%, #F4D03F 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color: transparent; */
-    animation: opac 0s 1.6s forwards, no-cursor 0s 3s forwards, typing 1.4s steps(14) 1.6s, blink .5s step-end infinite alternate;
+    animation: opac 0s 2.6s forwards, no-cursor 0s 3s forwards, typing 1.4s steps(14) 2.6s, blink .5s step-end infinite alternate;
     font-size: 3.2rem;
     opacity: 0;
 }
@@ -172,7 +173,7 @@ body {
     width: 32ch;
     font-size: 1.7rem;
     border-right: 2px solid #fff;
-    animation: opac 0s 3s forwards, typing 1.4s steps(30) 3s, blink .5s step-end infinite alternate;
+    animation: opac 0s 4s forwards, typing 1.4s steps(30) 4s, blink .5s step-end infinite alternate;
     opacity: 0;
 }
 
@@ -814,6 +815,7 @@ body {
 .animate-colored-key {
     background-color: var(--colored-key-press) !important;
     animation: press-colored-key 0.5s;
+
 }
 
 /* switch theme color btn */
@@ -1225,6 +1227,33 @@ input.switch-theme:checked + label:after {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.front-content:nth-child(1) {
+    overflow: hidden;
+    width: 90%;
+    margin-left: 10px;
+}
+
+.front-content img {
+    width: 150%;
+    height: 50%;
+    margin: 20px 10px 0;;
+}
+
+.back-content a{
+    text-decoration: none;
+    color: #111;
+    border: 1px solid #333;
+    margin-top: 8px;
+    border-radius: 5px;;
+    padding: 2px 7px;
+}
+
+
+.back-content:nth-child(1) a:hover {
+    background-color: #88888822;
+}
+
+
 .back-content {
     transform: rotateY(180deg);
 }
@@ -1625,6 +1654,9 @@ input.switch-theme:checked + label:after {
     .book-container {
         transform: rotate(-20deg) scale(0.8);
     }
+    .move-book {
+        transform: scale(0.8) translate(50%,50%);
+    }
     .camera-container {
         transform: scale(0.24) rotate(5deg);
         bottom: 330px;
@@ -1681,6 +1713,9 @@ input.switch-theme:checked + label:after {
     .book-container {
         transform: rotate(-20deg) scale(0.7);
     }
+    .move-book {
+        transform: scale(0.7) translate(50%,50%);
+    }
     .camera-container {
         transform: rotate(5deg) scale(0.22);
         bottom: 330px;
@@ -1730,6 +1765,7 @@ input.switch-theme:checked + label:after {
     }
 }
 
+/* stuff shifted below */
 @media (max-width: 817px) {
     .container {
         clip-path: ellipse(100% 96% at 48% 0%);
@@ -1740,6 +1776,9 @@ input.switch-theme:checked + label:after {
     }
     .book-container {
         transform: rotate(-20deg) scale(0.6);
+    }
+    .move-book {
+        transform: scale(0.6) translate(50%,50%);
     }
     .camera-container {
         transform: rotate(5deg) scale(0.22);
@@ -1861,6 +1900,10 @@ input.switch-theme:checked + label:after {
     .book-container {
         bottom: -50px;
     }
+    .move-book {
+        bottom: 45%;
+    right: 32%;
+    }
     .shade {
         width: 55%;
     }
@@ -1876,6 +1919,7 @@ input.switch-theme:checked + label:after {
 
 }
 
+/* phones */
 @media (max-width: 500px) {
     .keyboard-container {
         transform: translate(-50%,-5%) scale(.73);
@@ -1883,20 +1927,25 @@ input.switch-theme:checked + label:after {
     }
     .book-container {
         transform: rotate(-20deg) scale(0.6);
-        right: -10px;
+        right: -30px;
         bottom: -70px;
 
     }
+    .move-book {
+        transform: scale(0.6) translate(50%,50%);
+        right: 32%;
+        bottom: 45%;
+    }
     .camera-container {
         transform: rotate(5deg) scale(0.22);
-        right: 60px;
-        bottom: 280px;
+        right: 50px;
+        bottom: 265px;
 
     }
     .phone-container {
         transform: rotate(-12deg) scale(0.7);
         right: 25px;
-        top: 90px;
+        top: 100px;
     }
     .plant-container {
         left: 1px;
@@ -1925,11 +1974,6 @@ input.switch-theme:checked + label:after {
         transform: rotate(-45deg) scale(0.6);
 
     }
-    .coffee-container {
-        bottom: -10px;
-        left: 40px;
-        transform: scale(0.6);
-    }
     .line-1 {
         font-size: .7rem;
     }
@@ -1945,7 +1989,7 @@ input.switch-theme:checked + label:after {
     }
     .coffee-container {
         bottom: 15px;
-        left: 50px;
+        left: 30px;
         transform: scale(0.6);
     }
     
@@ -1953,25 +1997,23 @@ input.switch-theme:checked + label:after {
 
 @media (max-width: 400px) {
     .keyboard-container {
-        transform: translate(-50%,-5%) scale(.68);
+        transform: translate(-50%,-5%) scale(.64, .68);
         top: -16px;
     }
     .book-container {
         transform: rotate(-20deg) scale(0.6);
-        right: -10px;
-        bottom: -70px;
-
+    }
+    .move-book {
+        transform: scale(0.6) translate(50%,50%);
+        right: 32%;
+        bottom: 45%;
     }
     .camera-container {
         transform: rotate(5deg) scale(0.22);
-        right: 60px;
-        bottom: 280px;
-
     }
     .phone-container {
         transform: rotate(-12deg) scale(0.7);
-        right: 25px;
-        top: 90px;
+       
     }
     .plant-container {
         left: 1px;
@@ -2000,11 +2042,6 @@ input.switch-theme:checked + label:after {
         transform: rotate(-45deg) scale(0.6);
 
     }
-    .coffee-container {
-        bottom: -10px;
-        left: 40px;
-        transform: scale(0.6);
-    }
     .line-1 {
         font-size: .7rem;
     }
@@ -2020,7 +2057,7 @@ input.switch-theme:checked + label:after {
     }
     .coffee-container {
         bottom: 15px;
-        left: 50px;
+        left: 30px;
         transform: scale(0.6);
     }
     .shade {

@@ -200,7 +200,7 @@ function generateRandomPressingOnKeyboardKeys(keys) {
 
     let randomKey = Math.floor(Math.random()*keys.length) 
     
-    let wholeAnimationDuration = 4600 //magic number! dont get lazy and change it bruh change it to get the sum of all typing animation duration
+    let wholeAnimationDuration = 5600 //magic number! dont get lazy and change it bruh change it to get the sum of all typing animation duration
 
     let keyboardPressInterval = setInterval(function(){
         clearKeyClass(keys[randomKey])
