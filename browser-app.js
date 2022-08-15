@@ -290,7 +290,6 @@ function disableselect(e) {
   containerDOM.onmousedown = disableselect
 
 
-
 function switchThemeColor(switchTheme) {
     
     if(switchTheme.color == 'blue') {
@@ -307,3 +306,9 @@ function switchThemeColor(switchTheme) {
     }
 
 }
+
+const loader = document.querySelector('.loader-container')
+
+window.addEventListener('load',()=>{
+    loader.classList.add('hide-loader')
+})
