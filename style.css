@@ -3,6 +3,8 @@
         --switch-btn-color: #C2DD69;
         --switch-bg: #C2DD6911;
         --container-bg: #db4551;
+        --text-neoru1: #a6343e;
+        --text-neoru2: #ff5664;
         --eraser-bg: #C27A61;
         --eraser-line: #994f33;
         --pencil-bg: #555553;
@@ -22,6 +24,8 @@
     --switch-btn-color: #16A085;
     --switch-bg: #16A08511;
     --container-bg: #132d55;
+    --text-neoru1: #0e2241;
+    --text-neoru2: #183869;
     --eraser-bg: #685940;
     --eraser-line: #382C15;
     --pencil-bg: #D8A31A;
@@ -135,7 +139,7 @@ body {
     padding-right: 3px;
     color: #fff;
     font-family:'Courier New', Courier, monospace;
-    filter: drop-shadow(-1px 4.66px 0px rgba(0,0,0,0.2));
+    /* filter: drop-shadow(-1px 4.66px 0px rgba(0,0,0,0.2)); */
     user-select:auto;
 }
 
@@ -150,10 +154,13 @@ body {
 
 .line-1 {
     width: 13ch;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 1.5rem;
     opacity: 0;
     animation: opac 0s 1s forwards, no-cursor 0s 1.6s forwards,typing 1.6s steps(13) 1s, blink .5s step-end infinite alternate;
+    color: var(--container-bg);
+    text-shadow: -1px 1px 1px var(--text-neoru1),
+    1px -1px 1px var(--text-neoru2);
 }
 
 .line-2 {
@@ -166,7 +173,13 @@ body {
     animation: opac 0s 2.6s forwards, no-cursor 0s 3s forwards, typing 1.4s steps(14) 2.6s, blink .5s step-end infinite alternate;
     font-size: 3.2rem;
     opacity: 0;
-}
+    /* background-color: #071933; */
+    /* color: #132d55; */
+    text-shadow: -1px 1px 1px var(--text-neoru1),
+    1px -1px 1px var(--text-neoru2);
+    }
+    
+
 
 .line-3 {
     margin-top: 10px;
@@ -175,6 +188,9 @@ body {
     border-right: 2px solid #fff;
     animation: opac 0s 4s forwards, typing 1.4s steps(30) 4s, blink .5s step-end infinite alternate;
     opacity: 0;
+    color: var(--container-bg);
+    text-shadow: -1px 1px 1px var(--text-neoru1),
+    1px -1px 1px var(--text-neoru2);
 }
 
 /* End My Info */
