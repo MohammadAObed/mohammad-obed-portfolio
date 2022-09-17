@@ -55,25 +55,14 @@ const camera = {
 const glasses = {
     infoDisplayed: false
 }
-//present your name in the middle and it will have an animation typing from the keyboard or keyboard we have
-//when presenting the name after loading the page the name will be revealed by having type animation, and the keys of my name letter will be pressed on the keyboard when my name is typed (thier color will change to maybe white) (just do a keyboard without keyboard like this https://www.vecteezy.com/vector-art/3222500-top-view-of-working-table-with-space-for-text-with-accessory-on-desk)
-// say in the middle click on anyhting, its interactive, and make everything interactive
 
-//coffee cup if clicked the halo fading if will be doubled each click on the cup
 
 //book will be not rotated and will hardly appear (slightly from the top) from the bottom of page, only appearing headers, it will have read more then the book will be held to cover almost mostly the screen https://www.vecteezy.com/vector-art/3222491-top-view-of-working-table-with-space-for-text-with-accessory-on-desk
-
-// a note book (have a To: typed in it) beside the keyboard will be input and when clicked it will send an email to me (so its a message but the input will look like something is written on it dynamically when typing on keyboard) https://www.vecteezy.com/vector-art/3222525-flat-design-top-view-of-working-table-with-accessory-on-desk
-
-//pencil when clicked will have a dropdown like an abajora sheet containing my degree
 
 //add shadow like in this link https://www.vecteezy.com/vector-art/1750515-keyboard-apple-cup-a-coffee-on-the-desk
 
 //add for the book hold me btn
-//add the phone beside the book
 //add the twigles to the background
-//create shadow for html elements
-
 
 // Event Listeners
 
