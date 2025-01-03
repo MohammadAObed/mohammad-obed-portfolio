@@ -151,7 +151,7 @@ body {
   background-color: #444444cc;
 }
 
-.name {
+.my-name {
   font-weight: bold;
   font-size: 2.5rem;
 }
@@ -177,12 +177,26 @@ body {
   filter: drop-shadow(-1px 4.66px 0px rgba(0, 0, 0, 0.2));
 }
 
+.clicking {
+  color: #c2dd69;
+  font-weight: bold;
+}
+
 .line-3 {
   margin-top: 10px;
   width: 32ch;
   font-size: 1.7rem;
   border-right: 2px solid #fff;
-  animation: opac 0s 4s forwards, typing 1.4s steps(30) 4s, blink 0.5s step-end infinite alternate;
+  animation: opac 0s 4s forwards, no-cursor 0s 4.4s forwards, typing 1.4s steps(30) 4s, blink 0.5s step-end infinite alternate;
+  opacity: 0;
+}
+
+.line-4 {
+  margin-top: 26px;
+  width: 20ch;
+  font-size: 1.7rem;
+  border-right: 2px solid #fff;
+  animation: opac 0s 5.4s forwards, typing 1.4s steps(30) 5.4s, blink 0.5s step-end infinite alternate;
   opacity: 0;
 }
 
@@ -1593,6 +1607,9 @@ input.switch-theme:checked + label:after {
 .line-3-t2 {
   color: #8892b0;
 }
+.line-4-t2 {
+  color: #8892b0;
+}
 
 .pot-t2 {
   background-color: #382c15;
@@ -1837,6 +1854,10 @@ input.switch-theme:checked + label:after {
     font-size: 1.3rem;
   }
 
+  .line-4 {
+    font-size: 1.3rem;
+  }
+
   .shade {
     width: 55%;
   }
@@ -1906,6 +1927,10 @@ input.switch-theme:checked + label:after {
   }
 
   .line-3 {
+    font-size: 1.1rem;
+  }
+
+  .line-4 {
     font-size: 1.1rem;
   }
 
@@ -2001,6 +2026,9 @@ input.switch-theme:checked + label:after {
   .line-3 {
     font-size: 1rem;
   }
+  .line-4 {
+    font-size: 1rem;
+  }
 
   .shade {
     width: 55%;
@@ -2052,6 +2080,9 @@ input.switch-theme:checked + label:after {
   }
 
   .line-3 {
+    font-size: 0.8rem;
+  }
+  .line-4 {
     font-size: 0.8rem;
   }
 
@@ -2163,6 +2194,10 @@ input.switch-theme:checked + label:after {
     font-size: 0.8rem;
   }
 
+  .line-4 {
+    font-size: 0.8rem;
+  }
+
   .text-container {
     margin-top: 0px;
     margin-left: 300px;
@@ -2238,6 +2273,10 @@ input.switch-theme:checked + label:after {
   }
 
   .line-3 {
+    font-size: 0.8rem;
+  }
+
+  .line-4 {
     font-size: 0.8rem;
   }
 
