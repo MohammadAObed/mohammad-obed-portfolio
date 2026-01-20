@@ -1,5 +1,5 @@
 //you might create classes (each class represent a thing like a book or keyboard) that link related functions together
-// then create an object that will have when initilized these functions and you just call the functions on the object
+// then create an object that will have when initilized these functions and you just call the functions on these object
 
 // DOM Elements
 const containerDOM = document.querySelector(".container");
